@@ -1,5 +1,5 @@
-# samokat_testcase
-Test case for Samokat (e-grocery)
+# samokat_testtask
+Test task for Samokat (e-grocery)
 
 1) Построить отчет в Power BI на основании имеющихся данных на своё усмотрение (какие метрики считать, оформление и т.п.)
    * в выгрузках рандомные данные, но стоит воспринимать их как фактические.
