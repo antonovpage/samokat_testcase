@@ -1,4 +1,23 @@
 Запрос должен вернуть топ 5 самых часто встречающихся товаров в первых заказах пользователей в СПб за период 15-30 августа.
 
-Структура воображаемой БД:
-![Структура воображаемой БД](https://images4.russianblogs.com/886/84/84ec9c2a4ae04cdac197097c9528b2fe.png)
+SELECT p.product,
+       COUNT(f.invoice_id) AS quantity
+FROM products AS p
+JOIN order_lines AS ol ON ol.product_id=p.product_id
+JOIN
+  (SELECT o.user_id,
+          o.order_id,
+          o.order_date
+   FROM orders AS o
+   JOIN warehouses AS w ON w.warehouse_id=o.warehouse_id
+   JOIN
+     (SELECT user_id,
+             MIN(order_date) AS first_order_date
+      FROM orders
+      WHERE CAST(order_date AS date) BETWEEN '2017-08-01' AND '2017-08-15'
+      GROUP BY user_id) AS x ON o.user_id = x.user_id
+   AND o.order_date = x.first_order_date
+   WHERE w.city = 'Санкт-Петербург') AS f ON f.order_id=ol.order_id
+GROUP BY p.product
+ORDER BY quantity DESC
+LIMIT 5;
