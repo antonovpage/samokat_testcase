@@ -1,5 +1,7 @@
 Запрос должен вернуть топ 5 самых часто встречающихся товаров в первых заказах пользователей в СПб за период 15-30 августа.
 
+![ER-диаграмма](https://i.ibb.co/FsW964t/12.png)
+
 SELECT p.product,
        COUNT(f.invoice_id) AS quantity
 FROM products AS p
