@@ -1,5 +1,5 @@
 # samokat_testtask
-Test task for Samokat (e-grocery)
+Test task for junior data analyst in Samokat (e-grocery)
 
 https://samokat.ru/
 
